@@ -93,8 +93,10 @@
             You are not allowed to come to the final destination before you find all the coordinates!</p>
 
             <p>The conctact person of your groups sends all pictures to: +31 6 13974921</p>
-            <button class="start-button" onclick="startHunt()">START THE HUNT</button>
-            <p><img src="liggendeemma.jpg" alt="Cover Image" class="cover-image"></p>
+            <button class="start-button" onclick="window.location.href='{{ url_for('missions') }}'">START THE
+                HUNT</button>
+            <p><img src="{{ url_for('static', filename='liggendeemma.jpg') }}" alt="Cover Image" class="cover-image">
+            </p>
 
             <script>
                 function startHunt() {
