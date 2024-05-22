@@ -1,10 +1,11 @@
+@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emma's Scavenger Hunt - Missions</title>
+    <title>Emma's Scavenger Hunt</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,8 +16,8 @@
         }
 
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 100%;
+            margin: 20px;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
@@ -24,125 +25,85 @@
             text-align: center;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         h1 {
             color: #009688;
-            margin: 0;
-        }
-
-        .instructions-btn {
-            display: inline-block;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #009688;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-family: Arial, sans-serif;
-        }
-
-        .instructions-btn:hover {
-            background-color: #00796b;
         }
 
         .mission {
             margin-bottom: 20px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
         }
 
         .mission h2 {
             color: #009688;
-            cursor: pointer;
-            margin: 0;
-            padding: 10px 0;
         }
 
-        .mission p,
-        .mission img {
-            display: none;
-            margin: 10px 0;
-        }
-
-        .photo {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
+        .mission p {
+            margin-bottom: 10px;
         }
 
         .end {
             margin-top: 50px;
+        }
+
+        .start-button {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .start-button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Added style for the image */
+        .cover-image {
+            width: 100%;
+            /* Adjust the width as needed */
+            max-width: 500px;
+            /* Limit the maximum width of the image */
+            margin-bottom: 20px;
+            /* Add some space below the image */
+            border-radius: 10px;
+            /* Add rounded corners to the image */
+        }
+
+        .narrow-text {
+            max-width: 600px;
+            /* Adjust the width as needed */
+            margin: 0 auto;
+            text-align: left;
+            text-align: center;
+
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Missions</h1>
-            <a href="{{ url_for('scavengerhunt') }}" class="instructions-btn">Instructions</a>
-        </div>
-        <div class="mission">
-            <h2 onclick="toggleMission(this)">Mission Amsterdamliebe</h2>
-            <p>Emma might be the most interesting tour guide of Amsterdam, but now it’s YOUR turn! Tell a random tourist
-                a fun fact about Berlin. Be creative! Take an entertaining video and send it to the Game Makers!</p>
-        </div>
-        <div class="mission">
-            <h2 onclick="toggleMission(this)">Mission Photo</h2>
-            <p>Emma took this picture when she was really drunk but she still remembers that she loved this location,
-                can you please recreate this exact picture with your group and send it to the gamemakers as proof?</p>
-            <img src="{{ url_for('static', filename='poort.jpg') }}" alt="Drunk Emma's photo" class="photo">
-        </div>
-        <div class="mission">
-            <h2 onclick="toggleMission(this)">Mission Quersumme</h2>
-            <p>The Game Makers are waiting for you at the end location, here we have to celebrate Emma's 23rd birthday
-                with a snack and a drink.
-                Emma hopes you paid attention in your German class, she wants you to buy something at the supermarket
-                which has the quersumme of 23 in total. The Game Makers need a photo of the receipt!</p>
-        </div>
-        <div class="mission">
-            <h2 onclick="toggleMission(this)">Mission JK (CLOSES AT 8)</h2>
-            <p>Emma spreads so much love and creativity. Now it is time to give back. Draw something for Emma on the JK
-                common room white board for <strong>5 minutes</strong> and make a time lapse video of this.</p>
-            <p><strong>The white board you have to draw on is across the Computational Social Science common room is in
-                    the basement of the JK building at UvA
-                    Roeterseiland.</strong></p>
-        </div>
-        <div class="mission">
-            <h2 onclick="toggleMission(this)">Mission Fest</h2>
-            <p>We hope you didn’t lose your shotglass. Go to Fest where Emma works, the bartender will tell you what to
-                do. Send a picture to the Game Makers!</p>
-        </div>
-        <div class="mission">
-            <h2 onclick="toggleMission(this)">Mission Riddle</h2>
-            <p>Emma might be the most annoying riddler of Amsterdam. Solve the riddle below and send us the location.
-            </p>
-            <p><strong>Where cobblestones meet whispers of old,<br>In Amsterdam’s heart, my secret hold.<br>Once a place
-                    of refuge, now a sight to behold,<br>Where am I, in Amsterdam's fold?</strong></p>
-        </div>
-        <div class="end">
-            <p><strong>THE GAMEMAKERS ARE WAITING FOR YOU!</strong></p>
-        </div>
-    </div>
+        <h1>Welcome to Emma’s Scavenger Hunt</h1>
+        <p>
+        <div class="narrow-text">
+            Every mission you get a part of the coordinates if you send a photo with the right answer to the Game
+            Makers.
 
-    <script>
-        function toggleMission(element) {
-            var pElements = element.nextElementSibling;
-            while (pElements) {
-                if (pElements.tagName.toLowerCase() === 'p' || pElements.tagName.toLowerCase() === 'img') {
-                    pElements.style.display = pElements.style.display === 'none' ? 'block' : 'none';
+            You are not allowed to come to the final destination before you find all the coordinates!</p>
+
+            <p>The conctact person of your groups sends all pictures to: +31 6 13974921</p>
+            <button class="start-button" onclick="startHunt()">START THE HUNT</button>
+            <p><img src="{{ url_for('static', filename='liggendeemma.jpg') }}" alt="Cover Image" class="cover-image">
+            </p>
+
+            <script>
+                function startHunt() {
+                    window.location.href = "missions.html";
                 }
-                pElements = pElements.nextElementSibling;
-            }
-        }
-    </script>
+            </script>
+        </div>
 </body>
 
 </html>
