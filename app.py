@@ -1,14 +1,17 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
-def scavengerhunt():
-    return render_template('scavenger.html')
 
-@app.route('/missions')
+@app.route("/")
+def home():
+    return render_template("scavengerhunt.html")
+
+
+@app.route("/missions")
 def missions():
-    return render_template('missions.html')
+    return render_template("missions.html")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run()
