@@ -59,25 +59,18 @@
             background-color: #cc0000;
         }
 
-        /* Added style for the image */
         .cover-image {
             width: 100%;
-            /* Adjust the width as needed */
             max-width: 500px;
-            /* Limit the maximum width of the image */
             margin-bottom: 20px;
-            /* Add some space below the image */
             border-radius: 10px;
-            /* Add rounded corners to the image */
         }
 
         .narrow-text {
             max-width: 600px;
-            /* Adjust the width as needed */
             margin: 0 auto;
             text-align: left;
             text-align: center;
-
         }
     </style>
 </head>
@@ -89,21 +82,14 @@
         <div class="narrow-text">
             Every mission you get a part of the coordinates if you send a photo with the right answer to the Game
             Makers.
-
             You are not allowed to come to the final destination before you find all the coordinates!</p>
-
-            <p>The conctact person of your groups sends all pictures to: +31 6 13974921</p>
+            <p>The contact person of your groups sends all pictures to: +31 6 13974921</p>
             <button class="start-button" onclick="window.location.href='{{ url_for('missions') }}'">START THE
                 HUNT</button>
             <p><img src="{{ url_for('static', filename='liggendeemma.jpg') }}" alt="Cover Image" class="cover-image">
             </p>
-
-            <script>
-                function startHunt() {
-                    window.location.href = "missions.html";
-                }
-            </script>
         </div>
+    </div>
 </body>
 
 </html>
