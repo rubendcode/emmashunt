@@ -31,25 +31,31 @@
         .mission {
             margin-bottom: 20px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
         }
 
         .mission h2 {
             color: #009688;
+            cursor: pointer;
+            margin: 0;
+            padding: 10px 0;
         }
 
-        .mission p {
-            margin-bottom: 10px;
-        }
-
-        .end {
-            margin-top: 50px;
+        .mission p,
+        .mission img {
+            display: none;
+            margin: 10px 0;
         }
 
         .photo {
             width: 100%;
             max-width: 400px;
             border-radius: 10px;
-            margin-top: 10px;
+        }
+
+        .end {
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -58,41 +64,38 @@
     <div class="container">
         <h1>Missions</h1>
         <div class="mission">
-            <h2>Mission Amsterdamliebe</h2>
+            <h2 onclick="toggleMission(this)">Mission Amsterdamliebe</h2>
             <p>Emma might be the most interesting tour guide of Amsterdam, but now it’s YOUR turn! Tell a random tourist
                 a fun fact about Berlin. Be creative! Take an entertaining video and send it to the Game Makers!</p>
         </div>
         <div class="mission">
-            <h2>Mission Photo</h2>
+            <h2 onclick="toggleMission(this)">Mission Photo</h2>
             <p>Emma took this picture when she was really drunk but she still remembers that she loved this location,
                 can you please recreate this exact picture with your group and send it to the gamemakers as proof?</p>
             <img src="{{ url_for('static', filename='poort.jpg') }}" alt="Drunk Emma's photo" class="photo">
         </div>
         <div class="mission">
-            <h2>Mission Quersumme</h2>
+            <h2 onclick="toggleMission(this)">Mission Quersumme</h2>
             <p>The Game Makers are waiting for you at the end location, here we have to celebrate Emma's 23rd birthday
                 with a snack and a drink.
                 Emma hopes you paid attention in your German class, she wants you to buy something at the supermarket
                 which has the quersumme of 23 in total. The Game Makers need a photo of the receipt!</p>
         </div>
         <div class="mission">
-            <h2>Mission JK (CLOSES AT 8)</h2>
+            <h2 onclick="toggleMission(this)">Mission JK (CLOSES AT 8)</h2>
             <p>Emma spreads so much love and creativity. Now it is time to give back. Draw something for Emma on the JK
-                common room white board for <strong>5 minutes</strong> and make a time lapse video of this.
-
+                common room white board for <strong>5 minutes</strong> and make a time lapse video of this.</p>
             <p><strong>The white board you have to draw on is across the Computational Social Science common room is in
                     the basement of the JK building at UvA
-                    Roeterseiland.</strong>
-            <p>
-            </p>
+                    Roeterseiland.</strong></p>
         </div>
         <div class="mission">
-            <h2>Mission Fest</h2>
+            <h2 onclick="toggleMission(this)">Mission Fest</h2>
             <p>We hope you didn’t lose your shotglass. Go to Fest where Emma works, the bartender will tell you what to
                 do. Send a picture to the Game Makers!</p>
         </div>
         <div class="mission">
-            <h2>Mission Riddle</h2>
+            <h2 onclick="toggleMission(this)">Mission Riddle</h2>
             <p>Emma might be the most annoying riddler of Amsterdam. Solve the riddle below and send us the location.
             </p>
             <p><strong>Where cobblestones meet whispers of old,<br>In Amsterdam’s heart, my secret hold.<br>Once a place
@@ -102,6 +105,18 @@
             <p><strong>THE GAMEMAKERS ARE WAITING FOR YOU!</strong></p>
         </div>
     </div>
+
+    <script>
+        function toggleMission(element) {
+            var pElements = element.nextElementSibling;
+            while (pElements) {
+                if (pElements.tagName.toLowerCase() === 'p' || pElements.tagName.toLowerCase() === 'img') {
+                    pElements.style.display = pElements.style.display === 'none' ? 'block' : 'none';
+                }
+                pElements = pElements.nextElementSibling;
+            }
+        }
+    </script>
 </body>
 
 </html>
